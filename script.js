@@ -1,0 +1,100 @@
+const lang = 'ru'
+// let date = new Date()
+
+// let dayNumber = date.getDate()
+// let dayName = date.toLocaleString(lang, { weekday: 'long' })
+// let dayNamee = dayName[0].toUpperCase() + dayName.slice(1)
+// let month = date.getMonth()
+// let monthNames = date.toLocaleString(lang, { month: 'long' })
+// let monthNamee = monthNames[0].toUpperCase() + monthNames.slice(1)
+// let year = date.getFullYear()
+
+// document.getElementById('month').innerHTML = monthNamee
+// document.getElementById('dayName').innerHTML = dayNamee
+// document.getElementById('dayNumber').innerHTML = dayNumber
+// document.getElementById('year').innerHTML = year
+
+let nowDate = new Date(),
+  nowDateNumber = nowDate.getDate(),
+  nowMonth = nowDate.getMonth(),
+  nowYear = nowDate.getFullYear(),
+  container = document.getElementById('month-calendar'),
+  monthContainer = container.getElementsByClassName('month-name')[0],
+  yearContainer = container.getElementsByClassName('year-name')[0],
+  daysContainer = container.getElementsByClassName('days')[0],
+  prev = container.getElementsByClassName('prev')[0],
+  next = container.getElementsByClassName('next')[0],
+  monthName = [
+    'январь',
+    'февраль',
+    'март',
+    'апрель',
+    'май',
+    'июнь',
+    'июль',
+    'август',
+    'сентябрь',
+    'октябрь',
+    'ноябрь',
+    'декабрь',
+  ]
+
+let curDate = nowDate.setMonth(nowDate.getMonth() - 1)
+console.log(nowDate.getFullYear())
+
+function setMonthCalendar(year, month) {
+  let monthDays = new Date(year, month + 1, 0).getDate(),
+    monthPrefix = new Date(year, month, 0).getDay(),
+    monthDaysText = ''
+
+  monthContainer.textContent = monthName[month]
+  yearContainer.textContent = year
+  daysContainer.innerHTML = ''
+
+  if (monthPrefix > 0) {
+    for (let i = 1; i <= monthPrefix; i++) {
+      monthDaysText += '<li></li>'
+    }
+  }
+
+  for (let i = 1; i <= monthDays; i++) {
+    monthDaysText += '<li>' + i + '</li>'
+  }
+
+  daysContainer.innerHTML = monthDaysText
+
+  if (month == nowMonth && year == nowYear) {
+    days = daysContainer.getElementsByTagName('li')
+    days[monthPrefix + nowDateNumber - 1].classList.add('date-now')
+  }
+}
+
+setMonthCalendar(nowYear, nowMonth)
+
+prev.onclick = function () {
+  let curDate = new Date(
+    yearContainer.textContent,
+    monthName.indexOf(monthContainer.textContent)
+  )
+
+  curDate.setMonth(curDate.getMonth() - 1)
+
+  let curYear = curDate.getFullYear(),
+    curMonth = curDate.getMonth()
+
+  setMonthCalendar(curYear, curMonth)
+}
+
+next.onclick = function () {
+  let curDate = new Date(
+    yearContainer.textContent,
+    monthName.indexOf(monthContainer.textContent)
+  )
+
+  curDate.setMonth(curDate.getMonth() + 1)
+
+  let curYear = curDate.getFullYear(),
+    curMonth = curDate.getMonth()
+
+  setMonthCalendar(curYear, curMonth)
+}

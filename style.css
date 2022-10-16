@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+body{
+  min-height: 100vh;
+  background: url('./assets/back-ground.jpg');
+  background-size: cover;
+  background-position: center;
+
+}
+.wrapper {
+  max-width: 780px;
+  padding: 0.5rem;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: center;
+
+}
+/* .calendar{
+  margin-top: 1rem;
+  width: 10rem;
+  background: #ffffff;
+  border-radius: 0.7rem;
+  -webkit-box-reflect: below 1px linear-gradient(transparent,transparent,rgba(0, 0, 68, 0.26));
+}
+.calendar #month{
+  padding: 0.3rem;
+  background: red;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 0.7rem 0.7rem 0 0;
+}
+.calendar #dayName{
+  padding-top: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #999;
+  text-align: center;
+}
+.calendar #dayNumber{
+  font-size: 4rem;
+  font-weight: 800;
+  color: #333;
+  text-align: center;
+}
+.calendar #year{
+  padding-bottom: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #999;
+  text-align: center;
+} */
+
+/*----------- Календарь ----------- */
+#month-calendar{
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.month{
+  position: relative;
+  padding: 1rem 2rem;
+  background: rgb(170, 6, 6);
+  text-align: center;
+  width: 100%;
+  color: #ffffff;
+  list-style: none;
+}
+
+.month li{
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.prev {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+.fas-left {
+  width: 2rem;
+  height: 2rem;
+  color: rgb(31, 31, 31);
+  /* background-color: rgb(90, 90, 90); */
+}
+
+.next {
+  position: absolute;
+  top: 50%;
+  right: 25%;
+  transform: translate(50%, -50%);
+}
+.fas-right {
+  width: 2rem;
+  height: 2rem;
+  color: rgb(31, 31, 31);
+  /* border: 1px solid #000; */
+  /* border-radius: 50%; */
+  /* background-color: rgb(90, 90, 90); */
+}
+
+.month li.year-name{
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+/* дни недели */
+.weekdays{
+  background-color: #d1d1d1;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: left;
+}
+
+.weekdays li{
+  padding: 0.5rem 0;
+  display: inline-block;
+  flex: 0 0 calc(100% / 7);
+  text-align: center;
+}
+
+/* дни */
+.days{
+  margin: 0;
+  padding: 1rem 0.5rem;
+  background-color: #eeeeee;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-content: flex-start;
+}
+
+.days li{
+  padding: 0.5rem;
+  height: 3rem;
+  list-style: none;
+  display: flex;
+  justify-content: start;
+  flex: 0 0 calc(100% / 7);
+  color: #999;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  border: 1px solid #ddd;
+}
+
+.days li.date-now{
+  color: #000;
+  font-weight: 700;
+}
